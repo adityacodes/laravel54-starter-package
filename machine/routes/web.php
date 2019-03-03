@@ -55,7 +55,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::middleware(['setupinstaller'])->prefix('setup/{otp}')->group(function() {
+Route::middleware(['setupinstaller'])->prefix('setup')->group(function() {
 	Route::get('/', 'SetupController@getStarted');
 	Route::post('/', 'SetupController@postStarted')->name('storeenv');
 });
@@ -68,7 +68,6 @@ Route::middleware(['maintenance'])->prefix(env('MAINTENANCE_URL').'/{password}')
 
 
 Route::get('/{any}', function ($any) {
-	var_dump($any);
 	return redirect('/');
   // any other url, subfolders also
 

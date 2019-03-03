@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure, Session;
 
-class RedirectIfRegOff
+class RedirectIfUserRegOff
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,13 @@ class RedirectIfRegOff
      */
     public function handle($request, Closure $next)
     {
-        $isRegOn = env('ADMIN_REGISTRATION');
+        $isRegOn = (bool)env('USER_REGISTRATION');
         if($isRegOn){
             return $next($request);
         }
         else{
-            Session::flash('warning', 'Admin registration is not available at this point of time.');
-            return redirect('/admin/login');
+            $error =  'User registration is not available at this point of time.';
+            return redirect()->route('login')->withError($error);
         }
     }
 }

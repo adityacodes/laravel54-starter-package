@@ -20,7 +20,7 @@
 				
 				@endif
           
-	          {!! Form::open(array('route' => [$submitroute, $otp], 'class' => $form_var['class'], 'autocomplete' => 'off', 'files' => true, 'id' => $form_var['id'], $form_var['other'])) !!}
+	          {!! Form::open(array('route' => [$submitroute], 'class' => $form_var['class'], 'autocomplete' => 'off', 'files' => true, 'id' => $form_var['id'], $form_var['other'])) !!}
 
 	    			@foreach($fields as $field => $fv)
 	                    <div class="form-group row">

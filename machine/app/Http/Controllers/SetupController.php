@@ -195,7 +195,7 @@ class SetupController extends Controller
                 'admin_registration'	=> 'required'
             );
   
-  	public function getStarted($otp)
+  	public function getStarted()
   	{
 
   		$fields = $this->formfields;
@@ -207,7 +207,7 @@ class SetupController extends Controller
   		$fields['admin_registration']['default'] = (int)env('ADMIN_REGISTRATION');
   		$submitroute = 'storeenv';
 
-  		$button = array(
+  		$button = array( 
   						'id'	=> 'submit',
   						'class'	=> 'pull-down btn-success btn-lg col-lg-10 col-md-offset-2 					col-xs-offset-3 text-center',
   						'title'	=> 'STORE ENVIRONMENT FILE'
@@ -215,7 +215,6 @@ class SetupController extends Controller
 
   		return view('package.startinstall')
             ->with('fields', $fields)
-  					->with('otp', $otp)
   					->with('button', $button)
   					->with('form_var', $this->form_var)
   					->with('submitroute', $submitroute);

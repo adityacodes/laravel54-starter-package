@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 
 class SetupInstaller
-{
+{ 
     /**
      * Handle an incoming request.
      *
@@ -15,7 +15,8 @@ class SetupInstaller
      */
     public function handle($request, Closure $next)
     {
-        if ($request->otp != '123456') {
+        $isOn = (bool)env('SETUP_ACCESS');
+        if (!$isOn) {
             return redirect('/');
         }
         return $next($request);
