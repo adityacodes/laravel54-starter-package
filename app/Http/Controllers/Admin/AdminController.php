@@ -106,8 +106,9 @@ class AdminController extends Controller
     }
 
 
-    public function searchuser($keyword = null)
+    public function searchuser(Request $request)
     {
+        $keyword = $request->keyword;
         if(isset($keyword) && !empty($keyword))
         {
           $users = User::SearchByKeyword($keyword)->limit(5)->get();

@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 Route::get('register/verify/{confirmation_code}', 'Auth\RegisterController@confirm');
 
@@ -41,7 +43,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function(){
 	Route::get('user/{id}', 'Admin\AdminController@getShowUser')->name('admin.user.show');
 	Route::get('user/{id}/edit', 'Admin\AdminController@getEditUser')->name('admin.user.edit');
 	Route::post('user/{id}/edit', 'Admin\AdminController@postEditUser')->name('user.save');
-	Route::get('search/user/{keyword?}','Admin\AdminController@searchuser' )->name('admin.user.search');
+	Route::post('search/user','Admin\AdminController@searchuser' )->name('admin.user.search');
 	Route::get('dashboard', 'Admin\AdminController@getDashboard')->name('admin.dashboard');
 	
 	Route::get('settings', 'Admin\AdminController@getSettings')->name('admin.settings');
@@ -63,3 +65,11 @@ Route::middleware(['maintenance'])->prefix(env('MAINTENANCE_URL').'/{password}')
 	Route::get('/', 'SetupController@getMaintenance');
 	Route::post('/', 'SetupController@postMaintenance')->name('postmn');
 });
+
+
+Route::get('/{any}', function ($any) {
+	var_dump($any);
+	return redirect('/');
+  // any other url, subfolders also
+
+})->where('any', '.*');

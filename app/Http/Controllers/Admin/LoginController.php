@@ -9,7 +9,7 @@ use Auth;
 
 class LoginController extends Controller
 {
-	protected $redirectTo = '/admin/dashboard';
+	   protected $redirectTo = '/admin/dashboard';
 
     use AuthenticatesUsers;
 
@@ -21,6 +21,10 @@ class LoginController extends Controller
     protected function guard()
     {
       return Auth::guard('admin');
+    }
+
+    protected function authenticated(Request $request){
+      return redirect()->route('admin.dashboard');
     }
 
     //Shows admin login form

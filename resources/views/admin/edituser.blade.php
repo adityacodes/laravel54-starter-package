@@ -19,7 +19,7 @@
 	                            <div class="col-md-6">
 	                            	<div class="input-group border-input">                           
                                     <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"></i>
+                                        <i class="fa fa-pencil"></i>
                                     </span>
 
 	                                <input id="name" type="text" class="form-control" name="{{$key}}" value="{{ $user->$key }}" required>

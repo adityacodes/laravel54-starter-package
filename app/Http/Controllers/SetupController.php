@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB, Artisan, Session;
 
-class SetupController extends Controller
+class SetupController extends Controller 
 {
 
   	private $form_var = array(
@@ -15,9 +15,7 @@ class SetupController extends Controller
   	);
 
   	private $routes = array(
-  		'store_env' => 'store',
-
-
+  		'store_env' => 'store'
   	);
 
     private $formfields = array(
@@ -166,8 +164,7 @@ class SetupController extends Controller
                         'invalid_feed'  => 'Please provide a valid url.'
                         ),
 
-
-            'admin_registration'=> array('name'  =>  'admin_registration',
+        'admin_registration'=> array('name'  =>  'admin_registration',
                         'label_for'   => 'admin_registration', 
                         'label_class' => 'col-sm-3 col-form-label', 
                         'field_class' => 'col-lg-9', 
@@ -239,7 +236,7 @@ class SetupController extends Controller
       try {
             Session::flash('firstinstall', "All set to true.");
             $this->migrateinstall();
-            return redirect("/".$request->maintenance_url.'/'.$request->maintenance_password);
+            return redirect("/".$request->maintenance_url."/".$request->maintenance_password);
 
       } catch (\Exception $e) {
           return back()->withErrors(array('Error establishing connection to database'.$e->getMessage()));

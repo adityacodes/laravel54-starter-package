@@ -4,7 +4,6 @@
 @section('content')
 
 <div class="container" id="login-form">
-    <a href="index.html" class="login-logo"><img src="/assets/img/logo-dark.png"></a>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
@@ -37,7 +36,7 @@
                                     <div class="col-xs-12">
                                         <div class="input-group">                           
                                         <span class="input-group-addon">
-                                            <i class="fa fa-email"></i>
+                                            <i class="fa fa-envelope"></i>
                                         </span>
                                         <input class="form-control" name="email" type="email" id="email" placeholder="john@deo.com" required autofocus value="{{ old('email') }}">
 

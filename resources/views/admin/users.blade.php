@@ -15,7 +15,8 @@
                     <h2>Users Data</h2>
                 </div>
                 <div class="panel-body">
-                    <input type="text" name="asas" id="keyword">
+                    Search User :
+                    <input type="text" class="form-control" name="asas" id="keyword"><br>
                     <table id="usersdata" class="table table-striped table-bordered" cellspacing="0">
                         <thead>
                             <tr>
@@ -56,7 +57,7 @@
         </div>
     </div>
 </div>
-
+{{ csrf_field() }}
 
 @endsection
 
@@ -65,12 +66,18 @@
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#keyword").bind("change paste keyup", function() {
-             $( "#result" ).empty();
-            $.get( "{{route('admin.user.search')}}"+"/"+$(this).val() , function( data ) {
-              $( "#result" ).html( data );
-              // console.log(data);
-            });
+        let xTriggered = 0;
+        $("#keyword").on("change paste keyup keydown", function() {
+            $( "#result" ).empty();
+
+            if(xTriggered>=3){
+                $.post( "{{route('admin.user.search')}}", { keyword: $(this).val(), _token: '{{ csrf_token() }}' } ).done(function( data ) {
+                  
+                  $( "#result" ).html( data );
+                  
+                });
+            }
+            xTriggered++;
         });
 
     });
