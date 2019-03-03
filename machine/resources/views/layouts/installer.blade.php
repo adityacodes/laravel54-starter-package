@@ -6,8 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Aditya's Laravel Installer</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core CSS -->
-    <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     @yield('stylesheets')
@@ -18,9 +20,7 @@
       @yield('content')
     </div>
 
-    <script src="{{asset('jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('popper/popper.min.js')}}"></script>
-    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     @yield('scripts')
   </body>
 </html>

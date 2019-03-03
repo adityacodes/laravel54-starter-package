@@ -5,26 +5,21 @@
     <div class="row">
     	@include('admin.partials.sidebar')
         <div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">User Edit</div>
+            <div class="card">
+                <div class="card-header bg-white">User Edit</div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     <form class="form-horizontal" method="POST" action="{{route('user.save', $user->id)}}" enctype="multipart/form-data">
                     	{{csrf_field()}}
                     	@foreach($keys as $key)
                     		@if($key != "password" && $key != 'remember_token' && $key != 'confirmed' && $key != 'avatar')
-                    		<div class="form-group{{ $errors->has($key) ? ' has-error' : '' }}">
+                    		<div class="row justify-content-center form-group{{ $errors->has($key) ? ' has-error' : '' }}">
 	                            <label for="name" class="col-md-4 control-label">{{strtoupper($key)}}</label>
 
 	                            <div class="col-md-6">
-	                            	<div class="input-group border-input">                           
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-pencil"></i>
-                                    </span>
 
 	                                <input id="name" type="text" class="form-control" name="{{$key}}" value="{{ $user->$key }}" required>
 
-	                            	</div>
 	                                @if ($errors->has($key))
 	                                    <span class="help-block">
 	                                        <strong>{{ $errors->first($key) }}</strong>
@@ -35,7 +30,7 @@
                     		@endif
                     	@endforeach
 
-                    	<div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                    	<div class="row justify-content-center form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
 	                            <label for="name" class="col-md-4 control-label">Avatar</label>
 	                            <div class="col-md-6">
 	                            	@if($user->avatar)
@@ -50,7 +45,7 @@
 	                            @endif
 		                </div>
 
-                    	<div class="form-group{{ $errors->has('confirmed') ? ' has-error' : '' }}">
+                    	<div class="row justify-content-center form-group{{ $errors->has('confirmed') ? ' has-error' : '' }}">
 	                            <label for="name" class="col-md-4 control-label">CONFIRMED ?</label>
 	                            <div class="col-md-6">
 			                    	<select name="confirmed" class="form-control">

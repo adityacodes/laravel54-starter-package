@@ -10,11 +10,11 @@
     <div class="row">
         @include('admin.partials.sidebar')
         <div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header bg-white">
                     <h2>Users Data</h2>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     Search User :
                     <input type="text" class="form-control" name="asas" id="keyword"><br>
                     <table id="usersdata" class="table table-striped table-bordered" cellspacing="0">

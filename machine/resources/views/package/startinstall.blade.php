@@ -23,7 +23,7 @@
 	          {!! Form::open(array('route' => [$submitroute], 'class' => $form_var['class'], 'autocomplete' => 'off', 'files' => true, 'id' => $form_var['id'], $form_var['other'])) !!}
 
 	    			@foreach($fields as $field => $fv)
-	                    <div class="form-group row">
+	                    <div class="row justify-content-center form-group row">
 				    		<label class="{{$fv['label_class']}}" 
 				    				for="{{$fv['label_for']}}">
 				    				{{$fv['label']}} : <sup class="required">*</sup>
@@ -57,7 +57,7 @@
 				    		</div>
 				    	</div>
 				    @endforeach
-	                    <div class="form-group">
+	                    <div class="row justify-content-center form-group">
 		                    {!! Form::submit($button['title'], array('class' => 'btn '.$button['class'], 'id' => $button['id']  )) !!}
 		                </div>
 			  {!! Form::close() !!}

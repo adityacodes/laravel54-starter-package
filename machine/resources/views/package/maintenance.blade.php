@@ -35,7 +35,7 @@
 
 				{!! Form::open(array('route' => [$submitroute, $password], 'class' => $form_var['class'], 'autocomplete' => 'off', 'files' => true, 'id' => $form_var['id'], $form_var['other'])) !!}
 						<input type="hidden" name="password" value="{{$password}}">
-	                    <div class="form-group row">
+	                    <div class="row justify-content-center form-group row">
 				    		<label class="col-sm-4 col-form-label" 
 				    				for="maintenance">
 				    				Choose Task : <sup class="required">*</sup>
@@ -66,7 +66,7 @@
 				    			</div>
 				    		</div>
 				    	</div>
-	                    <div class="form-group">
+	                    <div class="row justify-content-center form-group">
 		                    {!! Form::submit($button['title'], array('class' => 'btn '.$button['class'], 'id' => $button['id']  )) !!}
 		                </div>
 			  {!! Form::close() !!}

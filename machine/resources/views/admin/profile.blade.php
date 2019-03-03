@@ -6,15 +6,15 @@
 	<div class="row">
 		@include('admin.partials.sidebar')
 		<div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h2>Admin Profile</h2></div>
+            <div class="card">
+                <div class="card-header bg-white"><h2>Admin Profile</h2></div>
 
-                <div class="panel-body">
+                <div class="card-body">
                 	<form class="form-horizontal" method="POST" action="{{route('admin.profile.save')}}">
                          {{csrf_field()}}
                         @foreach($keys as $key )
                                 @if($key != 'password' && $key !='remember_token' && $key !='last_login'&& $key !='created_at'&& $key !='updated_at'&& $key !='id')
-                                <div class="form-group{{ $errors->has($key) ? ' has-error' : '' }}">
+                                <div class="row justify-content-center form-group{{ $errors->has($key) ? ' has-error' : '' }}">
                                     <label for="{{$key}}" class="col-md-4 control-label">
                                         {{strtoupper($key)}}
                                     </label>

@@ -6,10 +6,10 @@
     <div class="row">
         @include('admin.partials.sidebar')
         <div class="col-md-9">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h2>Admin Dashboard</h2></div>
+            <div class="card">
+                <div class="card-header bg-white"><h2>Admin Dashboard</h2></div>
 
-                <div class="panel-body">
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
