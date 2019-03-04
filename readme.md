@@ -1,6 +1,6 @@
 <p align="center">
 	<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
-	<img src="https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-outline.svg">
+	Bootstrap 4
 </p>
 
 
@@ -26,23 +26,33 @@ Support:-
 
 - Download this repository as it is.
 - Inside the machine folder copy .env.example to create .env file.
-- Run php artisan key:generate inside the machine folder. 
+- Inside the machine folder run 
+```php
+php artisan key:generate
+```  
 - Your website should be ready now.
 
 ## Backend Setup
 
 - Copy the entire folder to htdocs inside XAMPP folder.
 - Change SETUP_ACCESS=0 to SETUP_ACCESS=1 inside .env .
-- Start Apache and MySQL in XAMPP and goto http://localhost/<folder-name>/setup
+- Start Apache and MySQL in XAMPP and goto 
+```bash
+http://localhost/folder-name/setup
+```
 - Provide the appropriate credentials and database name.
 - Your backend setup is now ready.
 
 ### Front-end
-
 - Goto machine folder.
-- Run npm i
-- After that run: npm run hot
-- Your frontend setup is now ready for development.
+```bash
+npm i
+npm run hot
+```
+- Your frontend setup is now ready for development. For production use:
+```bash
+npm run prod
+```
 
 ### Admin Access
 
