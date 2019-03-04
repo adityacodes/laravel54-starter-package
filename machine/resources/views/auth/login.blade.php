@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-8 text-center">
-            <div class="card">
-                <div class="card-header bg-white bg-white"><h2>Login</h2></div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card rounded">
+                <div class="card-header bg-white bg-white">
+                    <h2 class="text-center">User Login</h2>
+                </div>
 
                 <div class="card-body">
                     @if (Session::has('success'))
@@ -33,7 +34,6 @@
 
                         <div class="row justify-content-center form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-4 control-label">Password</label>
-
                                 <div class="col-6">
                                     <input id="password" type="password" class="form-control" name="password" required>
 
@@ -46,21 +46,24 @@
                         </div>
 
                         <div class="row justify-content-center form-group">
-                                <div class="col-6">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                        </label>
-                                    </div>
+                            <div class="col-12 text-center">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
                                 </div>
+                            </div>
                         </div>
 
-                        <div class="row justify-content-center form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="row justify-content-center text-center form-group">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-block btn-primary">
                                     Login
                                 </button>
-
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="ml-auto">
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
@@ -71,5 +74,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

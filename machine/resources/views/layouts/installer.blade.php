@@ -10,7 +10,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     @yield('stylesheets')
   </head>

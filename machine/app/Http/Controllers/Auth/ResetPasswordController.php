@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use RedirectResponse;
 
 class ResetPasswordController extends Controller
 {
@@ -37,4 +38,10 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
         $this->redirectTo = env('AFTER_LOGIN_URL');
     }
+
+    public function sendResetResponse($response)
+    {
+        return redirect()->route('home')->with('status', trans($response));
+    }
+
 }

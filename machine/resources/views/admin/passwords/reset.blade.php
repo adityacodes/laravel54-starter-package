@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card bg-success">
+            <div class="card">
                 <div class="card-header bg-white">Reset Password</div>
 
                 <div class="card-body">
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="row justify-content-center form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="text-center">
                                 <button type="submit" class="btn btn-success">
                                     Reset Password
                                 </button>

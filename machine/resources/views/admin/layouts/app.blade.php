@@ -11,15 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <style type="text/css">
-        a{
-            text-decoration: none;
-        }
-    </style>
+    <link href="{{ asset('dist/css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color: #f5f8fa;">
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-sm bg-white navbar-white fixed-top">
             <!-- Branding Image -->
@@ -51,7 +45,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-sign-out"></i> Logout
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
                                     </a>
 
                                     <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
@@ -74,7 +68,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('dist/js/app.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

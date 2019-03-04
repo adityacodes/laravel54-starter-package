@@ -7,7 +7,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use DB, Session, Mail;
+use DB, Session;
+
+use App\Notifications\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -36,15 +38,13 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('user_reg_status');
         $this->redirectTo = env('AFTER_LOGIN_URL');
 
     }
 
-    public function showRegistrationForm()
-    {
+    public function showRegistrationForm(){
       return view('auth.register');
     }
 
@@ -89,35 +89,19 @@ class RegisterController extends Controller
     {
         // Laravel validation
         $validator = $this->validator($request->all());
-        if ($validator->fails()) 
-        {
+        if ($validator->fails()){
             $this->throwValidationException($request, $validator);
         }
-        // Using database transactions is useful here because stuff happening is actually a transaction
+        
         DB::beginTransaction();
-        try
-        {
+        try{
             $user = $this->create($request->all());
-            // After creating the user send an email with the random token generated in the create method above
-            $confirmation_code = substr(md5(($request->email).'giis') , 0, 20);
-            
-            Mail::send('auth.email.verify', [
-                'name' => $request->name,
-                'confirmation_code' => $confirmation_code
-            ], function($message) use ($request) 
-            {
-                $message->from('no-reply@'.strtolower(config('app.name', 'Laravel')).'.com', config('app.name', 'Laravel'));
-                $message->to($request->email, $request->name)->subject('Verification Link');
-            });
-
-            
-
+            $user->notify(new UserRegistered($user));
             DB::commit();
             Session::flash('success', 'A verification link has been sent to your registered email. Please verify to continue.');
             return redirect()->route('login');
         }
-        catch(Exception $e)
-        {
+        catch(Exception $e){
             DB::rollback();
             Session::flash('error', 'Server is busy. Please try again after sometime.');
             return back();
@@ -127,13 +111,10 @@ class RegisterController extends Controller
 
     public function confirm($confirmation_code)
     {
-        if(!$confirmation_code)
-        {
+        if(!$confirmation_code){
             return redirect()->route('login');
         }
-
         User::where('confirmation_code', $confirmation_code)->firstOrFail()->verified();
-        
         Session::flash('success', 'You have been successfully verified! Please login to continue.');
         return redirect()->route('login');
     }

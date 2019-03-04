@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-white">Reset Password</div>
 
@@ -55,7 +54,7 @@
                         </div>
 
                         <div class="row justify-content-center form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="text-center">
                                 <button type="submit" class="btn btn-primary">
                                     Reset Password
                                 </button>
@@ -66,5 +65,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

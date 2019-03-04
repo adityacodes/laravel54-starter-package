@@ -1,15 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-md-8 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-white"><h2>Register</h2></div>
+                <div class="card-header bg-white">
+                    <h2 class="text-center">Register User</h2>
+                </div>
 
-                <div class="card-body ">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        @if (Session::has('success'))
+                            <div class="alert alert-info" role="alert">{{ Session::get('success') }}
+                            </div>
+                        @elseif (Session::has('error'))
+                            <div class="alert alert-danger" role="alert">{{ Session::get('error') }}
+                            </div>
+
+                        @endif
+
+                        {{ csrf_field() }} 
 
                         <div class="row justify-content-center form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
@@ -74,5 +84,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

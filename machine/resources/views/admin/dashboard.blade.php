@@ -16,6 +16,9 @@
                         </div>
                     @endif
 
+                    <div class="alert alert-info">
+                        Welcome to Admin Dashboard.!
+                    </div>
                     
                 </div>
             </div>

@@ -1,0 +1,12 @@
+/*Have All Custom Styles Here*/
+body {
+    background-color: #f5f8fa;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mt-8{
+	margin-top: 5rem;
+}
